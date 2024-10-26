@@ -5,6 +5,7 @@ import Layout from "./views/components/Layout";
 
 import Home from "./views/home";
 import Events from "./views/Event/events";
+import Gardens from "./views/Garden/gardens";
 import AddEvent from "./views/Event/AddEvent";
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
           <Route index element={<Home />} />             {/* Home page */}
           <Route path="events" element={<Events />} /> {/* Events page */}
           <Route path="add-event" element={<AddEvent />} /> {/* Add Event page */}
+
+            <Route path="gardens" element={<Gardens />} /> {/* Events page */}
 
         </Route>
       </Routes>

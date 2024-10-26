@@ -33,7 +33,7 @@ const Layout = () => {
                   <Link className="nav-link" to="/Store">Store  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Jardin">Jardin  </Link>
+                  <Link className="nav-link" to="/gardens">Jardin  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Blog ">Blog  </Link>
