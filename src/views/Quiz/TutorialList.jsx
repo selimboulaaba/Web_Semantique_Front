@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { deleteTuto, fetchTutos } from '../../services/tutorialService';
+import { fetchQuizsByTuto } from '../../services/quizService';
 
 function TutorialList() {
-    
+
     const [tutos, setTutos] = useState([])
     const navigate = useNavigate();
     const [selectedTuto, setSelectedTuto] = useState(null);
+    const [quizs, setQuizs] = useState([])
 
     useEffect(() => {
         loadTutos();
@@ -27,13 +29,22 @@ function TutorialList() {
 
     const handleDelete = (id) => {
         deleteTuto(id)
-        .then(() => {
-            loadTutos();
-        })
+            .then(() => {
+                loadTutos();
+            })
     }
 
-  return (
-    <div className="container mt-4">
+    const fetchQuizs = async (id) => {
+        try {
+            const data = await fetchQuizsByTuto(id);
+            setQuizs(data.data);
+        } catch (error) {
+            console.error("Error fetching tutos:", error);
+        }
+    }
+
+    return (
+        <div className="container mt-4">
             <div className='d-flex justify-content-between mt-5 mb-5'>
                 <h1 className='ps-5'>Tutorial List</h1>
                 <button className="me-5 w-25 btn btn-success mb-3" onClick={handleCreate}>Add Tutorial</button>
@@ -58,6 +69,7 @@ function TutorialList() {
                                     data-bs-target="#viewInformation"
                                     onClick={() => {
                                         setSelectedTuto(tuto);
+                                        fetchQuizs(tuto.tutorial.value)
                                     }}
                                 >
                                     View Information
@@ -74,6 +86,18 @@ function TutorialList() {
                                                     <p><strong>Title:</strong> {selectedTuto.title.value}</p>
                                                     <p><strong>Content:</strong> {selectedTuto.content.value}</p>
                                                     <p><strong>Estimaed Time:</strong> {selectedTuto.estimated_time.value}</p>
+                                                    <hr />
+                                                    {quizs.length !== 0 ?
+                                                        <div>
+                                                            <h3 className='text-left mb-4'>Quizs</h3>
+                                                            {quizs.map((quiz, index) => (
+                                                                <p key={index}><strong>Question:</strong> {quiz.question.value}</p>
+                                                            ))}
+                                                        </div> :
+                                                        <div>
+                                                            <h5 className='text-left'>No Quizs Attached</h5>
+                                                        </div>
+                                                    }
                                                 </div>
                                             }
                                         </div>
@@ -88,7 +112,7 @@ function TutorialList() {
                 </tbody>
             </table>
         </div>
-  )
+    )
 }
 
 export default TutorialList

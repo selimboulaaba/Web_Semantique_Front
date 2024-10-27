@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9090/quiz/tuto';
+const API_URL = 'http://localhost:9090/tuto';
 
 const fetchTutos = async () => {
   const response = await axios.get(API_URL);
@@ -18,4 +18,8 @@ const deleteTuto = async (URI) => {
   });
 };
 
-export { fetchTutos, addTuto, deleteTuto };
+const addToQuiz = async (tutorialURI, quizURI) => {
+  await axios.put(`${API_URL}?tutorialURI=${encodeURIComponent(tutorialURI)}&quizURI=${encodeURIComponent(quizURI)}`);
+};
+
+export { fetchTutos, addTuto, deleteTuto, addToQuiz };

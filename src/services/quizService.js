@@ -23,4 +23,8 @@ const searchQuizs = async (search) => {
   return response.data;
 };
 
-export { fetchQuizs, addQuiz, deleteQuiz, searchQuizs };
+const fetchQuizsByTuto = async (URI) => {
+  return await axios.get(`${API_URL}/tuto?URI=${encodeURIComponent(URI)}`);
+}
+
+export { fetchQuizs, addQuiz, deleteQuiz, searchQuizs, fetchQuizsByTuto };

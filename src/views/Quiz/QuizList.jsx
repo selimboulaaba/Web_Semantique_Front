@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteQuiz, fetchQuizs, searchQuizs } from '../../services/quizService'
 import { useNavigate } from 'react-router-dom'
-import { fetchTutos } from '../../services/tutorialService';
+import { addToQuiz, fetchTutos } from '../../services/tutorialService';
 
 function QuizList() {
     const [quizs, setQuizs] = useState([])
@@ -47,7 +47,7 @@ function QuizList() {
     }
 
     const checkResponse = () => {
-        if (response === selectedQuiz.reponse) {
+        if (response === selectedQuiz.answer.value) {
             setResult({
                 completed: true,
                 correct: true,
@@ -72,6 +72,14 @@ function QuizList() {
         } catch (error) {
             console.error("Error fetching quizs:", error);
         }
+    }
+
+    const addQuizToTutorial = (e) => {
+        e.preventDefault();
+        addToQuiz(e.target.value, selectedQuiz.quiz.value)
+            .then(() => {
+                loadQuizs();
+            })
     }
 
     return (
@@ -135,6 +143,26 @@ function QuizList() {
                                                 <div className="modal-body">
                                                     <p><strong>Question:</strong> {selectedQuiz.question.value}</p>
                                                     <p><strong>Reponse:</strong> {selectedQuiz.answer.value}</p>
+                                                    <hr />
+                                                    {selectedQuiz.tutorial ?
+                                                        <div>
+                                                            <h3 className='text-left mb-4'>Tutorial</h3>
+                                                            <p><strong>Title:</strong> {selectedQuiz.tutorialTitle.value}</p>
+                                                            <p><strong>Content:</strong> {selectedQuiz.tutorialContent.value}</p>
+                                                            <p><strong>Estimated Time:</strong> {selectedQuiz.tutorialEstimatedTime.value}</p>
+                                                        </div> :
+                                                        <div>
+                                                            <h5 className='text-left'>No Tutorial Attached</h5>
+                                                            <form>
+                                                                <select onChange={addQuizToTutorial} className="form-select" aria-label="Default select example">
+                                                                    <option value={null} className='d-none' defaultValue>Choose a Tutorial to Add</option>
+                                                                    {tutos.map((tuto, index) => (
+                                                                        <option key={index} value={tuto.tutorial.value}>{tuto.title.value}</option>
+                                                                    ))}
+                                                                </select>
+                                                            </form>
+                                                        </div>
+                                                    }
                                                 </div>
                                             }
                                         </div>
@@ -176,7 +204,7 @@ function QuizList() {
                                                         required
                                                         className="form-control"
                                                     />
-                                                    <div className={!result.completed && "d-none"}>
+                                                    <div className={!result.completed ? "d-none" : ""}>
                                                         {result.correct ?
                                                             <p className='text-success mt-3 mb-0'>You are Correct</p> :
                                                             <p className='text-danger mt-3 mb-0'>You are Wrong</p>
