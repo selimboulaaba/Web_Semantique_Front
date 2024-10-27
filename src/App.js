@@ -6,6 +6,8 @@ import Layout from "./views/components/Layout";
 import Home from "./views/home";
 import Events from "./views/Event/events";
 import AddEvent from "./views/Event/AddEvent";
+import AddStore from './views/Store/AddStore';
+import StoreList from './views/Store/StoreList';
 
 function App() {
   return (
@@ -15,6 +17,16 @@ function App() {
           <Route index element={<Home />} />             {/* Home page */}
           <Route path="events" element={<Events />} /> {/* Events page */}
           <Route path="add-event" element={<AddEvent />} /> {/* Add Event page */}
+
+
+          <Route path="store" >
+            <Route index element={<StoreList />} /> 
+            <Route path="add" element={<AddStore />} />
+          </Route>
+          {/* <Route path="seed" >
+            <Route index element={<SeedList />} /> 
+            <Route path="add" element={<AddSeed />} />
+          </Route> */}
 
         </Route>
       </Routes>
