@@ -62,6 +62,11 @@ const Layout = () => {
                     Blog{" "}
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Review">
+                    Review{" "}
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
