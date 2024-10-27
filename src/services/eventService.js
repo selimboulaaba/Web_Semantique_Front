@@ -7,12 +7,12 @@ const fetchEvents = async () => {
   const response = await axios.get(API_URL);
   const bindings = response.data.results.bindings;
 
-  // Transform the SPARQL response into a usable format
   const events = bindings.map(binding => ({
     id: binding.event.value,
     name: binding.name.value,
     date: binding.date.value,
     location: binding.location.value,
+    sponsor: binding.sponsorName ? binding.sponsorName.value : "", // Add sponsor name
   }));
 
   return events;
@@ -33,8 +33,6 @@ const updateEvent = async (uri, eventData) => {
   return response.data;
 };
 
-
-// Modify deleteEvent to use URI query parameter
 const deleteEvent = async (uri) => {
   await axios.delete(`${API_URL}`, {
     params: {
@@ -42,4 +40,16 @@ const deleteEvent = async (uri) => {
     }
   });
 };
-export { fetchEvents, addEvent, updateEvent, deleteEvent };
+
+// New method to assign sponsor
+const assignSponsorToEvent = async (eventURI, sponsorURI) => {
+  const response = await axios.post(`${API_URL}/assign-sponsor`, null, {
+    params: {
+      eventURI: eventURI,
+      sponsorURI: sponsorURI
+    }
+  });
+  return response.data;
+};
+
+export { fetchEvents, addEvent, updateEvent, deleteEvent, assignSponsorToEvent };

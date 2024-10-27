@@ -5,6 +5,9 @@ import Layout from "./views/components/Layout";
 
 import Home from "./views/home";
 import Events from "./views/Event/events";
+import Gardens from "./views/gardens/gardens";
+import Materials from "./views/gardens/material";
+import Sponsors from "./views/Event/sponsor";
 import AddEvent from "./views/Event/AddEvent";
 
 function App() {
@@ -15,6 +18,11 @@ function App() {
           <Route index element={<Home />} />             {/* Home page */}
           <Route path="events" element={<Events />} /> {/* Events page */}
           <Route path="add-event" element={<AddEvent />} /> {/* Add Event page */}
+
+            <Route path="gardens" element={<Gardens />} /> {/* Events page */}
+            <Route path="sponsors" element={<Sponsors />} /> {/* Events page */}
+            <Route path="materials" element={<Materials />} /> {/* Events page */}
+
 
         </Route>
       </Routes>
