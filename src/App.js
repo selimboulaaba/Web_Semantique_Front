@@ -19,6 +19,8 @@ import QuizList from './views/Quiz/QuizList';
 import AddQuiz from './views/Quiz/AddQuiz';
 import TutorialList from './views/Quiz/TutorialList';
 import AddTutorial from './views/Quiz/AddTutorial';
+import AddReview from './views/Review/AddReview';
+import ReviewList from './views/Review/ReviewList';
 
 function App() {
   return (
@@ -49,6 +51,10 @@ function App() {
           <Route path="blog" >
             <Route index element={<BlogList />} /> 
             <Route path="add" element={<AddBlog />} />
+          </Route>
+          <Route path="review" >
+            <Route index element={<ReviewList />} /> 
+            <Route path="add" element={<AddReview />} />
           </Route>
 
           <Route path="quiz" >
