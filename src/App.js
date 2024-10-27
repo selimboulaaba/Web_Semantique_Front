@@ -5,6 +5,10 @@ import Layout from "./views/components/Layout";
 import Home from "./views/home";
 import Events from "./views/Event/events";
 import AddEvent from "./views/Event/AddEvent";
+import AddStore from './views/Store/AddStore';
+import StoreList from './views/Store/StoreList';
+import SeedList from './views/Seed/SeedList';
+import AddSeed from './views/Seed/AddSeed';
 import EnvironmentList from './views/Environment/EnvironmentList';
 import AddEnvironment from './views/Environment/AddEnvironment';
 import PlantList from './views/Plant/PlantList';
@@ -25,6 +29,16 @@ function App() {
           <Route path="Plant" >
             <Route index element={<PlantList />} /> 
             <Route path="add" element={<AddPlant />} />
+          </Route>
+
+
+          <Route path="store" >
+            <Route index element={<StoreList />} /> 
+            <Route path="add" element={<AddStore />} />
+          </Route>
+          <Route path="seed" >
+            <Route index element={<SeedList />} /> 
+            <Route path="add" element={<AddSeed />} />
           </Route>
 
         </Route>
