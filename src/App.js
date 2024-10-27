@@ -15,6 +15,8 @@ import PlantList from './views/Plant/PlantList';
 import AddPlant from './views/Plant/AddPlant';
 import AddBlog from './views/Blog/AddBlog';
 import BlogList from './views/Blog/BlogList'; 
+import AddReview from './views/Review/AddReview';
+import ReviewList from './views/Review/ReviewList';
 
 function App() {
   return (
@@ -45,6 +47,10 @@ function App() {
           <Route path="blog" >
             <Route index element={<BlogList />} /> 
             <Route path="add" element={<AddBlog />} />
+          </Route>
+          <Route path="review" >
+            <Route index element={<ReviewList />} /> 
+            <Route path="add" element={<AddReview />} />
           </Route>
 
         </Route>
