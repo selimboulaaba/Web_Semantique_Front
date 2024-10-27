@@ -6,7 +6,7 @@ function AddQuiz() {
 
   const [quiz, setQuiz] = useState({
     question: "",
-    reponse: ""
+    answer: ""
   })
   const navigate = useNavigate();
 
@@ -20,10 +20,10 @@ function AddQuiz() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addQuiz(quiz)
-    // .then(response => {
-    //   navigate("/quiz")
-    // })
+    addQuiz(quiz)
+    .then(response => {
+      navigate("/quiz")
+    })
   }
 
   return (
@@ -48,13 +48,13 @@ function AddQuiz() {
           </div>
         </div>
         <div className="mb-3 row">
-          <label htmlFor='reponse' className="col-2 col-form-label">Reponse</label>
+          <label htmlFor='answer' className="col-2 col-form-label">Reponse</label>
           <div className='col-10'>
             <input
-              id='reponse'
+              id='answer'
               type="text"
-              name="reponse"
-              value={quiz.reponse}
+              name="answer"
+              value={quiz.answer}
               onChange={handleChange}
               placeholder='Enter Response'
               required

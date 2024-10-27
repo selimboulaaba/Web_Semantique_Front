@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { deleteQuiz, fetchQuizs } from '../../services/quizService'
+import { deleteQuiz, fetchQuizs, searchQuizs } from '../../services/quizService'
 import { useNavigate } from 'react-router-dom'
+import { fetchTutos } from '../../services/tutorialService';
 
 function QuizList() {
-
-    const [quizs, setQuizs] = useState([
-        {
-            question: "why are you gay?",
-            reponse: "i'm not gay"
-        },
-        {
-            question: "how much is rtal?",
-            reponse: "0.5kg"
-        }
-    ])
+    const [quizs, setQuizs] = useState([])
     const navigate = useNavigate();
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [response, setResponse] = useState("")
@@ -21,15 +12,20 @@ function QuizList() {
         completed: false,
         correct: false,
     })
+    const [search, setSearch] = useState('')
+    const [tutos, setTutos] = useState([])
 
     useEffect(() => {
-        // loadQuizs();
+        loadQuizs();
     }, []);
 
     const loadQuizs = async () => {
         try {
             const data = await fetchQuizs();
             setQuizs(data);
+
+            const tutosResponse = await fetchTutos();
+            setTutos(tutosResponse)
         } catch (error) {
             console.error("Error fetching quizs:", error);
         }
@@ -40,7 +36,10 @@ function QuizList() {
     }
 
     const handleDelete = (id) => {
-        // deleteQuiz(id)
+        deleteQuiz(id)
+            .then(() => {
+                loadQuizs();
+            })
     }
 
     const handleResponse = (e) => {
@@ -61,6 +60,20 @@ function QuizList() {
         }
     }
 
+    const handleSearch = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const handleNewSearch = async (e) => {
+        e.preventDefault();
+        try {
+            const data = await searchQuizs(search);
+            setQuizs(data);
+        } catch (error) {
+            console.error("Error fetching quizs:", error);
+        }
+    }
+
     return (
         <div className="container mt-4">
             <div className='d-flex justify-content-between mt-5 mb-5'>
@@ -68,6 +81,20 @@ function QuizList() {
                 <button className="me-5 w-25 btn btn-success mb-3" onClick={handleCreate}>Add Quiz</button>
             </div>
 
+
+            <form className='row mb-3'>
+                <input
+                    id='search'
+                    type="text"
+                    name="search"
+                    value={search}
+                    onChange={handleSearch}
+                    placeholder='Search by Title'
+                    required
+                    className="offset-1 form-control w-50"
+                />
+                <button className='btn btn-success offset-2 col-2' onClick={(e) => handleNewSearch(e)}>Search</button>
+            </form>
             <table className="table table-hover table-bordered">
                 <thead className="table-success text-center">
                     <tr>
@@ -78,9 +105,9 @@ function QuizList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {quizs.map((quiz, index) => (
+                    {quizs.length !== 0 && quizs.map((quiz, index) => (
                         <tr key={index}>
-                            <td className='text-center align-middle'>{quiz.question}</td>
+                            <td className='text-center align-middle'>{quiz.question.value}</td>
                             <td className='text-center'>
                                 <button
                                     className="btn btn-info"
@@ -106,8 +133,8 @@ function QuizList() {
                                             </div>
                                             {selectedQuiz &&
                                                 <div className="modal-body">
-                                                    <p><strong>Question:</strong> {selectedQuiz.question}</p>
-                                                    <p><strong>Reponse:</strong> {selectedQuiz.reponse}</p>
+                                                    <p><strong>Question:</strong> {selectedQuiz.question.value}</p>
+                                                    <p><strong>Reponse:</strong> {selectedQuiz.answer.value}</p>
                                                 </div>
                                             }
                                         </div>
@@ -139,7 +166,7 @@ function QuizList() {
                                             </div>
                                             {selectedQuiz &&
                                                 <div className="modal-body">
-                                                    <p><strong>Question:</strong> {selectedQuiz.question}</p>
+                                                    <p><strong>Question:</strong> {selectedQuiz.question.value}</p>
                                                     <input
                                                         type="text"
                                                         name="response"
@@ -154,7 +181,7 @@ function QuizList() {
                                                             <p className='text-success mt-3 mb-0'>You are Correct</p> :
                                                             <p className='text-danger mt-3 mb-0'>You are Wrong</p>
                                                         }
-                                                        <p className={result.correct ? "text-success" : "text-danger"}><strong>Reponse:</strong> {selectedQuiz.reponse}</p>
+                                                        <p className={result.correct ? "text-success" : "text-danger"}><strong>Reponse:</strong> {selectedQuiz.answer.value}</p>
                                                     </div>
                                                 </div>
                                             }
@@ -166,7 +193,7 @@ function QuizList() {
                                 </div>
                             </td>
                             <td className='text-center'>
-                                <button className="btn btn-danger" onClick={() => handleDelete(quiz.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={() => handleDelete(quiz.quiz.value)}>Delete</button>
                             </td>
                         </tr>
                     ))}

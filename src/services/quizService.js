@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/quiz';
+const API_URL = 'http://localhost:9090/quiz';
 
 const fetchQuizs = async () => {
   const response = await axios.get(API_URL);
@@ -12,8 +12,15 @@ const addQuiz = async (eventData) => {
   return response.data;
 };
 
-const deleteQuiz = async (id) => {
-  await axios.delete(`${API_URL}/${id}`);
+const deleteQuiz = async (URI) => {
+  await axios.delete(API_URL, {
+    params: { URI }
+  });
 };
 
-export { fetchQuizs, addQuiz, deleteQuiz };
+const searchQuizs = async (search) => {
+  const response = await axios.get(`${API_URL}${search ? '/' + search : ''}`);
+  return response.data;
+};
+
+export { fetchQuizs, addQuiz, deleteQuiz, searchQuizs };

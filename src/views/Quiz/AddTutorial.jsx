@@ -7,6 +7,7 @@ function AddTutorial() {
     const [tuto, setTuto] = useState({
         title: "",
         content: "",
+        estimated_time: 0
     })
     const navigate = useNavigate();
 
@@ -20,10 +21,10 @@ function AddTutorial() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // addTuto(quiz)
-        // .then(response => {
-        //   navigate("/quiz")
-        // })
+        addTuto(tuto)
+        .then(() => {
+          navigate("/tuto")
+        })
     }
 
     return (
@@ -55,6 +56,21 @@ function AddTutorial() {
                             type="text"
                             name="content"
                             value={tuto.content}
+                            onChange={handleChange}
+                            placeholder='Enter Content'
+                            required
+                            className="form-control"
+                        />
+                    </div>
+                </div>
+                <div className="mb-3 row">
+                    <label htmlFor='estimated_time' className="col-2 col-form-label">Estimated Time</label>
+                    <div className='col-10'>
+                        <input
+                            id='estimated_time'
+                            type="number"
+                            name="estimated_time"
+                            value={tuto.estimated_time}
                             onChange={handleChange}
                             placeholder='Enter Content'
                             required

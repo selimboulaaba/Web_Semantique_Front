@@ -4,17 +4,12 @@ import { deleteTuto, fetchTutos } from '../../services/tutorialService';
 
 function TutorialList() {
     
-    const [tutos, setTutos] = useState([
-        {
-            title: "why are you gay?",
-            content: "i'm not gay",
-        },
-    ])
+    const [tutos, setTutos] = useState([])
     const navigate = useNavigate();
     const [selectedTuto, setSelectedTuto] = useState(null);
 
     useEffect(() => {
-        // loadTutos();
+        loadTutos();
     }, []);
 
     const loadTutos = async () => {
@@ -31,7 +26,10 @@ function TutorialList() {
     }
 
     const handleDelete = (id) => {
-        // deleteTuto(id)
+        deleteTuto(id)
+        .then(() => {
+            loadTutos();
+        })
     }
 
   return (
@@ -52,7 +50,7 @@ function TutorialList() {
                 <tbody>
                     {tutos.map((tuto, index) => (
                         <tr key={index}>
-                            <td className='text-center align-middle'>{tuto.title}</td>
+                            <td className='text-center align-middle'>{tuto.title.value}</td>
                             <td className='text-center'>
                                 <button
                                     className="btn btn-info"
@@ -73,8 +71,9 @@ function TutorialList() {
                                             </div>
                                             {selectedTuto &&
                                                 <div className="modal-body">
-                                                    <p><strong>Title:</strong> {selectedTuto.title}</p>
-                                                    <p><strong>Content:</strong> {selectedTuto.content}</p>
+                                                    <p><strong>Title:</strong> {selectedTuto.title.value}</p>
+                                                    <p><strong>Content:</strong> {selectedTuto.content.value}</p>
+                                                    <p><strong>Estimaed Time:</strong> {selectedTuto.estimated_time.value}</p>
                                                 </div>
                                             }
                                         </div>
@@ -82,7 +81,7 @@ function TutorialList() {
                                 </div>
                             </td>
                             <td className='text-center'>
-                                <button className="btn btn-danger" onClick={() => handleDelete(tuto.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={() => handleDelete(tuto.tutorial.value)}>Delete</button>
                             </td>
                         </tr>
                     ))}
