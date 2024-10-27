@@ -13,6 +13,8 @@ import EnvironmentList from './views/Environment/EnvironmentList';
 import AddEnvironment from './views/Environment/AddEnvironment';
 import PlantList from './views/Plant/PlantList';
 import AddPlant from './views/Plant/AddPlant';
+import AddBlog from './views/Blog/AddBlog';
+import BlogList from './views/Blog/BlogList'; 
 
 function App() {
   return (
@@ -39,6 +41,10 @@ function App() {
           <Route path="seed" >
             <Route index element={<SeedList />} /> 
             <Route path="add" element={<AddSeed />} />
+          </Route>
+          <Route path="blog" >
+            <Route index element={<BlogList />} /> 
+            <Route path="add" element={<AddBlog />} />
           </Route>
 
         </Route>
