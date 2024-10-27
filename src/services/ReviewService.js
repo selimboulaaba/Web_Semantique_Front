@@ -16,4 +16,7 @@ const deleteReview = async (uri) => {
   await axios.delete(API_URL, { params: { URI: uri } });
 };
 
-export { fetchReviews, addReview, deleteReview };
+const addReviewToBlog = async (reviewURI, blogURI) => {
+  await axios.put(`${API_URL}?reviewURI=${encodeURIComponent(reviewURI)}&blogURI=${encodeURIComponent(blogURI)}`);
+};
+export { fetchReviews, addReview, deleteReview  , addReviewToBlog };
