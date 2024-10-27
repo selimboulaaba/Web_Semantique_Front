@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./views/components/Layout";
@@ -10,6 +9,10 @@ import AddStore from './views/Store/AddStore';
 import StoreList from './views/Store/StoreList';
 import SeedList from './views/Seed/SeedList';
 import AddSeed from './views/Seed/AddSeed';
+import EnvironmentList from './views/Environment/EnvironmentList';
+import AddEnvironment from './views/Environment/AddEnvironment';
+import PlantList from './views/Plant/PlantList';
+import AddPlant from './views/Plant/AddPlant';
 
 function App() {
   return (
@@ -19,6 +22,14 @@ function App() {
           <Route index element={<Home />} />             {/* Home page */}
           <Route path="events" element={<Events />} /> {/* Events page */}
           <Route path="add-event" element={<AddEvent />} /> {/* Add Event page */}
+          <Route path="Environment" >
+            <Route index element={<EnvironmentList />} /> 
+            <Route path="add" element={<AddEnvironment />} />
+          </Route>
+          <Route path="Plant" >
+            <Route index element={<PlantList />} /> 
+            <Route path="add" element={<AddPlant />} />
+          </Route>
 
 
           <Route path="store" >

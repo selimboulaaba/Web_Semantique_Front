@@ -33,8 +33,13 @@ const Layout = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Plante">
-                    Plante{" "}
+                  <Link className="nav-link" to="/Environment">
+                    Environment{" "}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Plant">
+                    Plant{" "}
                   </Link>
                 </li>
                 <li className="nav-item">
