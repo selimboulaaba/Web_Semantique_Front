@@ -70,7 +70,7 @@ const Events = () => {
   return (
     <div className="container mt-4">
       <h1>Events</h1>
-      <button className="btn btn-primary mb-3" onClick={resetForm}>Add Event</button>
+      <button className="btn btn-primary mb-3" onClick={resetForm}>Reset Form</button>
 
       <form onSubmit={handleSubmit} className="mb-3">
         <div className="row">
