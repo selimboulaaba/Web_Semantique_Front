@@ -4,9 +4,11 @@ const Layout = () => {
   return (
     <div>
       <header>
-      <nav className="navbar navbar-expand-lg navbar-blue bg-info">
+        <nav className="navbar navbar-expand-lg navbar-blue bg-info">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">MyApp</Link>
+            <Link className="navbar-brand" to="/">
+              MyApp
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -21,22 +23,39 @@ const Layout = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">Home</Link>
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/events">Event</Link>
+                  <Link className="nav-link" to="/events">
+                    Event
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Plante">Plante </Link>
+                  <Link className="nav-link" to="/Plante">
+                    Plante{" "}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Store">Store  </Link>
+                  <Link className="nav-link" to="/Store">
+                    Store{" "}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Jardin">Jardin  </Link>
+                  <Link className="nav-link" to="/Seed">
+                    Seed{" "}
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Blog ">Blog  </Link>
+                  <Link className="nav-link" to="/Jardin">
+                    Jardin{" "}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Blog ">
+                    Blog{" "}
+                  </Link>
                 </li>
               </ul>
             </div>

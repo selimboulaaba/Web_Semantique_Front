@@ -8,6 +8,8 @@ import Events from "./views/Event/events";
 import AddEvent from "./views/Event/AddEvent";
 import AddStore from './views/Store/AddStore';
 import StoreList from './views/Store/StoreList';
+import SeedList from './views/Seed/SeedList';
+import AddSeed from './views/Seed/AddSeed';
 
 function App() {
   return (
@@ -23,10 +25,10 @@ function App() {
             <Route index element={<StoreList />} /> 
             <Route path="add" element={<AddStore />} />
           </Route>
-          {/* <Route path="seed" >
+          <Route path="seed" >
             <Route index element={<SeedList />} /> 
             <Route path="add" element={<AddSeed />} />
-          </Route> */}
+          </Route>
 
         </Route>
       </Routes>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9090/store';
+const API_URL = 'http://localhost:9090/seed';
 
 const fetchSeed = async () => {
   const response = await axios.get(API_URL);
