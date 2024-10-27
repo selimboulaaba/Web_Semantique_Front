@@ -24,8 +24,12 @@ const addEvent = async (eventData) => {
   return response.data;
 };
 
-const updateEvent = async (id, eventData) => {
-  const response = await axios.put(`${API_URL}/${id}`, eventData);
+const updateEvent = async (uri, eventData) => {
+  const response = await axios.put(`${API_URL}`, eventData, {
+    params: {
+      URI: uri
+    }
+  });
   return response.data;
 };
 
