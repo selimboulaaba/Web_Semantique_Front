@@ -15,6 +15,10 @@ import PlantList from './views/Plant/PlantList';
 import AddPlant from './views/Plant/AddPlant';
 import AddBlog from './views/Blog/AddBlog';
 import BlogList from './views/Blog/BlogList'; 
+import QuizList from './views/Quiz/QuizList';
+import AddQuiz from './views/Quiz/AddQuiz';
+import TutorialList from './views/Quiz/TutorialList';
+import AddTutorial from './views/Quiz/AddTutorial';
 import AddReview from './views/Review/AddReview';
 import ReviewList from './views/Review/ReviewList';
 
@@ -51,6 +55,15 @@ function App() {
           <Route path="review" >
             <Route index element={<ReviewList />} /> 
             <Route path="add" element={<AddReview />} />
+          </Route>
+
+          <Route path="quiz" >
+            <Route index element={<QuizList />} /> 
+            <Route path="add" element={<AddQuiz />} />
+          </Route>
+          <Route path="tuto" >
+            <Route index element={<TutorialList />} /> 
+            <Route path="add" element={<AddTutorial />} />
           </Route>
 
         </Route>

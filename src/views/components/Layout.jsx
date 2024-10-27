@@ -4,11 +4,9 @@ const Layout = () => {
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-lg navbar-blue bg-info">
+      <nav className="navbar navbar-expand-lg navbar-blue bg-success">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
-              MyApp
-            </Link>
+            <Link className="navbar-brand text-white" to="/">Ville-Verte</Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -20,47 +18,37 @@ const Layout = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
+            <div className="collapse navbar-collapse ms-5" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Home
-                  </Link>
+                  <Link className="nav-link text-white" to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/events">
-                    Event
-                  </Link>
+                  <Link className="nav-link text-white" to="/events">Event</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Environment">
-                    Environment{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Environment">Environment</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Plant">
-                    Plant{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Plant">Plante </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Store">
-                    Store{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Store">Store  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Seed">
-                    Seed{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Seed">Seed  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Jardin">
-                    Jardin{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Jardin">Jardin  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Blog ">
-                    Blog{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Blog ">Blog</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/quiz ">Quiz  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/tuto ">Tutorial  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Review">
