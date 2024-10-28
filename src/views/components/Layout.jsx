@@ -4,7 +4,7 @@ const Layout = () => {
   return (
     <div>
       <header>
-      <nav className="navbar navbar-expand-lg navbar-blue bg-success">
+        <nav className="navbar navbar-expand-lg navbar-blue bg-success">
           <div className="container-fluid">
             <Link className="navbar-brand text-white" to="/">Ville-Verte</Link>
             <button
@@ -34,17 +34,16 @@ const Layout = () => {
                 </li>
                 <li className="nav-item">
 
-                  <Link className="nav-link" to="/gardens">Jardin  </Link>
-
+                  <Link className="nav-link text-white" to="/gardens">Jardin  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link text-white" to="/Store">Store  </Link>
 
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link text-white" to="/Seed">Seed  </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/#">Jardin  </Link>
-                </li>
+
                 <li className="nav-item">
                   <Link className="nav-link text-white" to="/Blog ">Blog</Link>
                 </li>
