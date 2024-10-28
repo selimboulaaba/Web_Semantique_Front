@@ -6,6 +6,9 @@ const fetchStore = async () => {
   const response = await axios.get(API_URL);
   return response.data;
 };
+const fetchStoresBySeed = async (URI) => {
+  return await axios.get(`${API_URL}/StoreSeed?URI=${encodeURIComponent(URI)}`);
+}
 
 const addStore = async (storeData) => {
   const response = await axios.post(API_URL, storeData);
@@ -23,4 +26,4 @@ const searchStore = async (search) => {
   return response.data;
 };
 
-export { fetchStore, addStore, deleteStore, searchStore };
+export { fetchStore, addStore, deleteStore, searchStore ,fetchStoresBySeed};

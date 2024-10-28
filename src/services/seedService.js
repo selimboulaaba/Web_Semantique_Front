@@ -18,6 +18,10 @@ const deleteSeed = async (URI) => {
   });
 };
 
+const addToStore = async (seedURI, storeURI) => {
+  await axios.put(`${API_URL}?seedURI=${encodeURIComponent(seedURI)}&storeURI=${encodeURIComponent(storeURI)}`);
+};
 
 
-export { fetchSeed, addSeed, deleteSeed };
+
+export { fetchSeed, addSeed, deleteSeed ,addToStore};
