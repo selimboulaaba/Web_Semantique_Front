@@ -5,10 +5,12 @@ import {
   searchStore,
 } from "../../services/storeService";
 import { useNavigate } from "react-router-dom";
+import { addToStore, fetchSeed } from "../../services/seedService";
 
 function StoreList() {
   const [stores, setStores] = useState([]);
   const [search, setSearch] = useState("");
+  const [seeds, setSeeds] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +22,9 @@ function StoreList() {
       const data = await fetchStore();
       console.log(data); // Inspect the fetched data
       setStores(data);
+      const seedsResponse = await fetchSeed();
+      console.log("Seeds:", seedsResponse);
+      setSeeds(seedsResponse);
     } catch (error) {
       console.error("Error fetching stores:", error);
     }
@@ -45,6 +50,16 @@ function StoreList() {
     } catch (error) {
       console.error("Error fetching stores:", error);
     }
+  };
+
+  const addSeedToStore = (seedId, storeId) => {
+    // if (!seedId || !storeId) {
+    //   console.error("Seed ID or Store ID is missing.");
+    //   return;
+    // }
+    addToStore(seedId, storeId).then(() => {
+      loadStores();
+    });
   };
 
   const extractValue = (property) => property?.value || "N/A";
@@ -86,7 +101,7 @@ function StoreList() {
             <th>Name</th>
             <th>Location</th>
             <th>Phone</th>
-            <th>Delete</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -102,6 +117,28 @@ function StoreList() {
                 >
                   Delete
                 </button>
+                {/* <button
+                  style={{ marginLeft: "5px" }}
+                  className="btn btn-warning"
+                >
+                  <select
+                    onChange={(e) =>
+                      addSeedToStore(e.target.value, extractValue(store.Store))
+                    }
+                    className="form-select"
+                    style={{ marginLeft: "5px" }}
+                    aria-label="Default select example"
+                  >
+                    <option value={null} className="d-none" defaultValue>
+                      Choose a Seed
+                    </option>
+                    {seeds.map((seed, index) => (
+                      <option key={index} value={seed?.seed?.value}>
+                        {seed.type.value}
+                      </option>
+                    ))}
+                  </select>
+                </button> */}
               </td>
             </tr>
           ))}
