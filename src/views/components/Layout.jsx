@@ -39,7 +39,7 @@ const Layout = () => {
                   <Link className="nav-link text-white" to="/Seed">Seed  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/Jardin">Jardin  </Link>
+                  <Link className="nav-link text-white" to="/#">Jardin  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link text-white" to="/Blog ">Blog</Link>
@@ -51,9 +51,7 @@ const Layout = () => {
                   <Link className="nav-link text-white" to="/tuto ">Tutorial  </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Review">
-                    Review{" "}
-                  </Link>
+                  <Link className="nav-link text-white" to="/Review">Review</Link>
                 </li>
               </ul>
             </div>

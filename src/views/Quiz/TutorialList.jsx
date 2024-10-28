@@ -85,7 +85,7 @@ function TutorialList() {
                                                 <div className="modal-body">
                                                     <p><strong>Title:</strong> {selectedTuto.title.value}</p>
                                                     <p><strong>Content:</strong> {selectedTuto.content.value}</p>
-                                                    <p><strong>Estimaed Time:</strong> {selectedTuto.estimated_time.value}</p>
+                                                    <p><strong>Estimaed Time:</strong> {selectedTuto.estimated_time.value} min</p>
                                                     <hr />
                                                     {quizs.length !== 0 ?
                                                         <div>

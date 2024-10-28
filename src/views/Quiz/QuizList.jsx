@@ -149,7 +149,7 @@ function QuizList() {
                                                             <h3 className='text-left mb-4'>Tutorial</h3>
                                                             <p><strong>Title:</strong> {selectedQuiz.tutorialTitle.value}</p>
                                                             <p><strong>Content:</strong> {selectedQuiz.tutorialContent.value}</p>
-                                                            <p><strong>Estimated Time:</strong> {selectedQuiz.tutorialEstimatedTime.value}</p>
+                                                            <p><strong>Estimated Time:</strong> {selectedQuiz.tutorialEstimatedTime.value} min</p>
                                                         </div> :
                                                         <div>
                                                             <h5 className='text-left'>No Tutorial Attached</h5>
