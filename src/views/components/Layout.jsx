@@ -33,7 +33,11 @@ const Layout = () => {
                   <Link className="nav-link text-white" to="/Plant">Plante </Link>
                 </li>
                 <li className="nav-item">
+
+                  <Link className="nav-link" to="/gardens">Jardin  </Link>
+
                   <Link className="nav-link text-white" to="/Store">Store  </Link>
+
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link text-white" to="/Seed">Seed  </Link>
