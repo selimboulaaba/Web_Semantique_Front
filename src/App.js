@@ -4,6 +4,9 @@ import Layout from "./views/components/Layout";
 
 import Home from "./views/home";
 import Events from "./views/Event/events";
+import Gardens from "./views/gardens/gardens";
+import Materials from "./views/gardens/material";
+import Sponsors from "./views/Event/sponsor";
 import AddEvent from "./views/Event/AddEvent";
 import AddStore from './views/Store/AddStore';
 import StoreList from './views/Store/StoreList';
@@ -65,6 +68,11 @@ function App() {
             <Route index element={<TutorialList />} /> 
             <Route path="add" element={<AddTutorial />} />
           </Route>
+
+            <Route path="gardens" element={<Gardens />} /> {/* Events page */}
+            <Route path="sponsors" element={<Sponsors />} /> {/* Events page */}
+            <Route path="materials" element={<Materials />} /> {/* Events page */}
+
 
         </Route>
       </Routes>
